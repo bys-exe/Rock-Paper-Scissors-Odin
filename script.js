@@ -3,17 +3,27 @@ function getRandomInt(max){
 }
 function getComputerChoice(){
     let no=getRandomInt(3);
-    let choice=0;
+    let CPUchoice=0;
     if (no===0){
-        choice='rock';
+        CPUchoice='rock';
     }
     else if (no===1){
-        choice='paper';
+        CPUchoice='paper';
     }
     else if (no===2){
-        choice='scissor';
+        CPUchoice='scissor';
     }
 }
-function getHumanChoice{
-    
+function getHumanChoice(){
+    no=prompt('Choose a move from the choices below:\nType 0 for Rock\nType 1 for Paper\nType 2 for Scissor');
+    let HumanChoice=0;
+    if (no==0){
+        HumanChoice='rock';
+    }
+    else if (no==1){
+        HumanChoice='paper';
+    }
+    else if (no==2){
+        HumanChoice='scissor';
+    }
 }
