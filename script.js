@@ -65,17 +65,45 @@ function playGame(){
     const computerSelection = getComputerChoice();
     playRound(humanSelection, computerSelection);
 }
-for (i=1; i<6; i++){
-    playGame();
-    console.log('Your Score: ' +humanScore);
-    console.log('CPU Score: ' +computerScore);
-}
-if (humanScore>computerScore){
-    console.log('You Win!');
-}
-else if (humanScore<computerScore){
-    console.log('CPU Wins! Better Luck next time.');
-}
-else if (humanScore==computerScore){
-    console.log('It was a draw!');
-}
+// logic for 5 rounds
+// for (i=1; i<6; i++){
+//     playGame();
+//     console.log('Your Score: ' +humanScore);
+//     console.log('CPU Score: ' +computerScore);
+// }
+// if (humanScore>computerScore){
+//     console.log('You Win!');
+// }
+// else if (humanScore<computerScore){
+//     console.log('CPU Wins! Better Luck next time.');
+// }
+// else if (humanScore==computerScore){
+//     console.log('It was a draw!');
+// }
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissor = document.getElementById('scissor');
+rock.addEventListener('click',()=>{
+    let HumanChoice='rock';
+    console.log(HumanChoice);
+    const computerSelection = getComputerChoice();
+    playRound(HumanChoice,computerSelection);
+    console.log('Human Score: ', humanScore);
+    console.log('CPU Score: ', computerScore);
+});
+paper.addEventListener('click',()=>{
+    let HumanChoice='paper';
+    console.log(HumanChoice);
+    const computerSelection = getComputerChoice();
+    playRound(HumanChoice,computerSelection);
+    console.log('Human Score: ', humanScore);
+    console.log('CPU Score: ', computerScore);
+});
+scissor.addEventListener('click',()=>{
+    let HumanChoice='scissor';
+    console.log(HumanChoice);
+    const computerSelection = getComputerChoice();
+    playRound(HumanChoice,computerSelection);
+    console.log('Human Score: ', humanScore);
+    console.log('CPU Score: ', computerScore);
+});
