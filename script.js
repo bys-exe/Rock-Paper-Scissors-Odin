@@ -16,7 +16,7 @@ function getComputerChoice(){
     return CPUchoice;
 }
 function getHumanChoice(){
-    no=prompt('Choose a move from the choices below:\nType 0 for Rock\nType 1 for Paper\nType 2 for Scissor');
+    let no=prompt('Choose a move from the choices below:\nType 0 for Rock\nType 1 for Paper\nType 2 for Scissor');
     let HumanChoice=0;
     if (no==0){
         HumanChoice='rock';
@@ -32,31 +32,32 @@ function getHumanChoice(){
 let humanScore=0;
 let computerScore=0;
 function playRound(HumanChoice,CPUchoice){
+    const info = document.getElementById('info');
     if (HumanChoice==CPUchoice){
-        console.log('Its a Draw! No one gets a point.');
+        info.innerHTML = 'Its a Draw! No one gets a point.';
     }
     else if (HumanChoice=='rock' && CPUchoice=='paper') {
-        console.log('Paper beats rock, CPU gets point.');
+        info.innerHTML = 'Paper beats rock, CPU gets point.';
         computerScore++
     }
     else if (HumanChoice=='rock' && CPUchoice=='scissor') {
-        console.log('Rock beats scissor, Human gets point.');
+        info.innerHTML = 'Rock beats scissor, Human gets point.';
         humanScore++
     }
     else if (HumanChoice=='paper' && CPUchoice=='rock') {
-        console.log('Paper beats rock, Human gets point.');
+        info.innerHTML = 'Paper beats rock, Human gets point.';
         humanScore++
     }
     else if (HumanChoice=='paper' && CPUchoice=='scissor') {
-        console.log('Scissor beats paper, CPU gets point.');
+        info.innerHTML = 'Scissor beats paper, CPU gets point.';
         computerScore++
     }
     else if (HumanChoice=='scissor' && CPUchoice=='rock') {
-        console.log('Rock beats scissor, CPU gets point.');
+        info.innerHTML = 'Rock beats scissor, CPU gets point.';
         computerScore++
     }
     else if (HumanChoice=='scissor' && CPUchoice=='paper') {
-        console.log('scissor beats paper, Human gets point.');
+        info.innerHTML = 'Scissor beats paper, Human gets point.';
         humanScore++
     }
 }
@@ -65,7 +66,9 @@ function playGame(){
     const computerSelection = getComputerChoice();
     playRound(humanSelection, computerSelection);
 }
-// logic for 5 rounds
+
+
+
 // for (i=1; i<6; i++){
 //     playGame();
 //     console.log('Your Score: ' +humanScore);
@@ -80,30 +83,76 @@ function playGame(){
 // else if (humanScore==computerScore){
 //     console.log('It was a draw!');
 // }
+
+
 const rock = document.getElementById('rock');
 const paper = document.getElementById('paper');
 const scissor = document.getElementById('scissor');
+let gameOver = false;
 rock.addEventListener('click',()=>{
+    if (gameOver) return;
     let HumanChoice='rock';
-    console.log(HumanChoice);
+    const result = document.getElementById('results');
     const computerSelection = getComputerChoice();
     playRound(HumanChoice,computerSelection);
-    console.log('Human Score: ', humanScore);
-    console.log('CPU Score: ', computerScore);
+    const finalResult = document.getElementById('finalResult');
+    if(humanScore==5 || computerScore==5){
+        gameOver = true;
+        if (humanScore>computerScore){
+            finalResult.innerHTML= 'You Win!';
+        }
+        else if (humanScore<computerScore){
+            finalResult.innerHTML = 'CPU Wins! Better Luck next time.';
+        }
+        else if (humanScore==computerScore){
+            finalResult.innerHTML = 'It was a draw!';
+        }
+    }
+    result.innerHTML = `<p>Human Score: ${humanScore}</p>`;
+    result.innerHTML += `<p>CPU Score: ${computerScore}</p>`;
+
 });
 paper.addEventListener('click',()=>{
+    if (gameOver) return;
     let HumanChoice='paper';
-    console.log(HumanChoice);
+    const result = document.getElementById('results');
     const computerSelection = getComputerChoice();
     playRound(HumanChoice,computerSelection);
-    console.log('Human Score: ', humanScore);
-    console.log('CPU Score: ', computerScore);
+    const finalResult = document.getElementById('finalResult');
+    if(humanScore==5 || computerScore==5){
+        gameOver = true;
+        if (humanScore>computerScore){
+            finalResult.innerHTML= 'You Win!';
+        }
+        else if (humanScore<computerScore){
+            finalResult.innerHTML = 'CPU Wins! Better Luck next time.';
+        }
+        else if (humanScore==computerScore){
+            finalResult.innerHTML = 'It was a draw!';
+        }
+    }
+    result.innerHTML = `<p>Human Score: ${humanScore}</p>`;
+    result.innerHTML += `<p>CPU Score: ${computerScore}</p>`;
 });
 scissor.addEventListener('click',()=>{
+    if (gameOver) return;
     let HumanChoice='scissor';
-    console.log(HumanChoice);
+    const result = document.getElementById('results');
     const computerSelection = getComputerChoice();
     playRound(HumanChoice,computerSelection);
-    console.log('Human Score: ', humanScore);
-    console.log('CPU Score: ', computerScore);
+    const finalResult = document.getElementById('finalResult');
+    if(humanScore==5 || computerScore==5){
+        gameOver = true;
+        if (humanScore>computerScore){
+            finalResult.innerHTML= 'You Win!';
+        }
+        else if (humanScore<computerScore){
+            finalResult.innerHTML = 'CPU Wins! Better Luck next time.';
+        }
+        else if (humanScore==computerScore){
+            finalResult.innerHTML = 'It was a draw!';
+        }
+    }
+    result.innerHTML = `<p>Human Score: ${humanScore}</p>`;
+    result.innerHTML += `<p>CPU Score: ${computerScore}</p>`;
 });
